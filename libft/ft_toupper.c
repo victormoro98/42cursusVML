@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:12:08 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/20 14:24:39 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:20:09 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,4 @@ int	ft_toupper(int c)
 // 	printf("%i\n", ft_toupper(122));
 // 	printf("%i", ft_toupper(123));
 // 	return (0);	
-// }
+// } 

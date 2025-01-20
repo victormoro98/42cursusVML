@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/20 14:11:36 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:19:57 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_strlcat(char *dst, const char *src, int size)
 	int		lensrc;
 	char	*src_c;
 	int		c;
-
+ 
 	src_c = (char *)src;
 	lendst = ft_strlen(dst);
 	lensrc = ft_strlen(src_c);

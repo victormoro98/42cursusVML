@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:44:49 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/20 13:42:07 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:19:44 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlcpy(char	*dest, char *src, unsigned int c)
 	if (src == NULL || dest == NULL)
 		return (0);
 	if (c > 0)
-	{
+	{ 
 		while ((i < c - 1) && src[i] != '\0')
 		{
 			dest[i] = src[i];

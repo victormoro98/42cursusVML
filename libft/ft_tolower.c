@@ -6,14 +6,14 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:25:23 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/20 14:26:46 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:20:04 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int	ft_tolower(int c)
-{
+{ 
 	if (c >= 65 && c <= 90)
 		return (c + 32);
 	else
