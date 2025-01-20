@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 13:44:49 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/20 13:42:07 by vmoro-lu         ###   ########.fr       */
+/*   Created: 2025/01/20 14:28:14 by vmoro-lu          #+#    #+#             */
+/*   Updated: 2025/01/20 14:54:37 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char	*dest, char *src, unsigned int c)
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned int	i;
-	int				len;
+	int	i;
+	int	s_cast;
 
 	i = 0;
-	len = ft_strlen(src);
-	if (src == NULL || dest == NULL)
-		return (0);
-	if (c > 0)
+	while (s[i] != '\0')
 	{
-		while ((i < c - 1) && src[i] != '\0')
+		s_cast = (int)s;
+		if (c == s_cast)
 		{
-			dest[i] = src[i];
-			i++;
+			return (s);
+			break ;
 		}
-		dest[i] = '\0';
+		else
+			++i;
 	}
-	return (len);
+	return (NULL);
 }

@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 13:44:49 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/20 13:42:07 by vmoro-lu         ###   ########.fr       */
+/*   Created: 2025/01/20 14:25:23 by vmoro-lu          #+#    #+#             */
+/*   Updated: 2025/01/20 14:26:46 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char	*dest, char *src, unsigned int c)
+int	ft_tolower(int c)
 {
-	unsigned int	i;
-	int				len;
-
-	i = 0;
-	len = ft_strlen(src);
-	if (src == NULL || dest == NULL)
-		return (0);
-	if (c > 0)
-	{
-		while ((i < c - 1) && src[i] != '\0')
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
-	}
-	return (len);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	else
+		return (c);
 }
+
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	printf("%i\n", ft_toupper(122));
+// 	printf("%i", ft_toupper(123));
+// 	return (0);	
+// }
