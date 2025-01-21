@@ -1,35 +1,38 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 11:37:17 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/20 17:19:57 by vmoro-lu         ###   ########.fr       */
+/*   Created: 2025/01/20 19:19:39 by vmoro-lu          #+#    #+#             */
+/*   Updated: 2025/01/20 20:19:02 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "libft.h"
 
-int	ft_strlcat(char *dst, const char *src, int size)
+int	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int		lendst;
-	int		lensrc;
-	char	*src_c;
-	int		c;
- 
-	src_c = (char *)src;
-	lendst = ft_strlen(dst);
-	lensrc = ft_strlen(src_c);
+	size_t	len_dst;
+	size_t	len_src;
+	int		i;
 
-	c = 0;
-	while (src[c] != '\0' && dst[lendst] != 0)
+	i = 0;
+	len_dst = ft_strlen(dst);
+	len_src = ft_strlen((char *)src);
+	if (!src || !dst)
+		return (0);
+	if (size <= len_dst)
+		return (size + len_src);
+	else
 	{
-		dst[lendst] = src[c];
-		++c;
-		lendst++;
+		while (src[i] != '\0' && len_dst + i < size - 1)
+		{
+			dst[len_dst + i] = src[i];
+			i++;
+		}
+		dst[len_dst + i] = '\0';
+		return (len_dst + len_src);
 	}
-	dst[size -1] = '\0';
-	return (ft_strlen(dst));
 }
