@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 21:00:38 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/21 17:28:40 by vmoro-lu         ###   ########.fr       */
+/*   Created: 2025/01/21 14:36:18 by vmoro-lu          #+#    #+#             */
+/*   Updated: 2025/01/21 17:08:21 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
-void	*ft_memcpy(void	*dest, const void *src, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t			i;
-	unsigned char	*srcc;
-	unsigned char	*destc;
+	size_t	i;
 
-	if (dest == NULL && src == NULL)
-		return (NULL);
 	i = 0;
-	destc = (unsigned char *)dest;
-	srcc = (unsigned char *)src;
-	while (i < n)
+	while (((char)s1[i] != '\0' || (char)s2[i] != '\0') && i < n)
 	{
-		destc[i] = srcc[i];
-		++i;
+		if ((char)s1[i] != (char)s2[i])
+			return ((int)((unsigned char)s1[i] - (unsigned char)s2[i]));
+		i++;
 	}
-	return (dest);
+	return (0);
 }
+
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	printf ("%i", ft_strncmp("abcdefgh", "", 0));
+// 	return (0);
+// }

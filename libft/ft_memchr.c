@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 21:00:38 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/21 17:28:40 by vmoro-lu         ###   ########.fr       */
+/*   Created: 2025/01/21 17:15:55 by vmoro-lu          #+#    #+#             */
+/*   Updated: 2025/01/21 18:34:00 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
 
-void	*ft_memcpy(void	*dest, const void *src, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			i;
-	unsigned char	*srcc;
-	unsigned char	*destc;
+	size_t				i;
+	const unsigned char	*ptr = (const unsigned char *)s;
 
-	if (dest == NULL && src == NULL)
-		return (NULL);
 	i = 0;
-	destc = (unsigned char *)dest;
-	srcc = (unsigned char *)src;
 	while (i < n)
 	{
-		destc[i] = srcc[i];
-		++i;
+		if (ptr[i] == (unsigned char)c)
+			return ((void *)(ptr + i));
+		i++;
 	}
-	return (dest);
+	return (NULL);
 }
