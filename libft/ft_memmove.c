@@ -6,13 +6,13 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:44:56 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/16 20:36:19 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:09:51 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void	*dest, const void *src, int n)
+void	*ft_memmove(void	*dest, const void *src, size_t n)
 {
 	unsigned char	*dest_c;
 	unsigned char	*src_c;

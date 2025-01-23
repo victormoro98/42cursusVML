@@ -6,15 +6,15 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:55:48 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/21 21:00:54 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:21:15 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, int n)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int		i;
+	size_t	i;
 	char	*ptr;
 
 	i = 0;
