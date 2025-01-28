@@ -1,28 +1,28 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:21:12 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/28 13:12:09 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:04:01 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	count_num_digit(int n_1)
 {
 	int	counter;
-	
+
+	counter = 0;
 	if (n_1 < 0)
 	{
 		n_1 = -n_1;
 		count_num_digit(n_1);
 	}
-	else if (n_1== 0)
-		counter = 1;
 	while (n_1 > 0)
 	{
 		n_1 /= 10;
@@ -30,33 +30,34 @@ static int	count_num_digit(int n_1)
 	}
 	return (counter);
 }
+
 char	*ft_itoa(int n)
 {
-	int		len;
-	// int		is_negative;
+	int		n_digits;
 	char	*ret;
-	int		i;
+	int		negative;
 
-	len = count_num_digit(n);
-	// is_negative = f_t_isnegative(n);
-	i = (len + 1);
-	ret = malloc(sizeof(char) * i);
+	negative = (n < 0);
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	n_digits = (count_num_digit(n) + negative);
+	ret = malloc(sizeof(char) * (n_digits + 1));
 	if (!ret)
 		return (NULL);
-	ret[--i] = '\0';
-	if (n == 0)
-		ret[0] = '0';
-	if ()
+	if (negative)
 	{
 		n = -n;
 		ret[0] = '-';
 	}
-	while (n > 0)
+	ret[n_digits] = '\0';
+	while (n != 0)
 	{
-		ret[i--] = (n % 10) + '0';
+		ret[n_digits-- -1] = (n % 10) + '0';
 		n /= 10;
 	}
-	return(ret);
+	return (ret);
 }
 
 // int	main(void)
