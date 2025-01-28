@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:41:27 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/24 18:38:28 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:33:49 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -41,5 +41,6 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_itoa(int n);
 
 #endif
