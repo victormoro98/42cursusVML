@@ -6,12 +6,11 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:21:12 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/28 17:04:01 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:56:08 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	count_num_digit(int n_1)
 {

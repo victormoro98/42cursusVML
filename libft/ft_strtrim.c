@@ -6,12 +6,11 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:13:36 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/30 10:24:57 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:57:38 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static size_t	start(char const *s1, char const *set)
 {

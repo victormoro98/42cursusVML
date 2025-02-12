@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 16:47:19 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/02/04 11:06:19 by vmoro-lu         ###   ########.fr       */
+/*   Created: 2025/02/04 18:28:53 by vmoro-lu          #+#    #+#             */
+/*   Updated: 2025/02/04 18:33:23 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else if (n < 0)
+	if (!lst || !f)
+		return ;
+	while (lst != NULL)
 	{
-		n = -n;
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(n, fd);
+		f(lst->content);
+		lst = lst->next;
 	}
-	else if (n >= 10 && n <= 2147483647)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
-	}
-	else if (n >= 0 && n <= 9)
-		ft_putchar_fd(n + '0', fd);
-	return ;
 }
-
-/* int	main(void)
-{
-	ft_putnbr_fd(21474836471, 1);
-	return (0);
-} */

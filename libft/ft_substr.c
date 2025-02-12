@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:48:06 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/30 10:44:03 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:51:06 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr[i] = '\0';
 	return (substr);
 }
-// #include <stdio.h>
-
-// int	main(void)
-// {
-
-// }

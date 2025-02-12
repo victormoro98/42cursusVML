@@ -6,13 +6,12 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:30:41 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/30 18:29:03 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:57:12 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdbool.h>
-// #include <stdio.h>
 
 static size_t	count_words(char const *s, char c)
 {
