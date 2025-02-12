@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:12:02 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/02/11 17:40:55 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:06:58 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
@@ -112,4 +112,25 @@ size_t	ft_strlen(const char *str)
 		++i;
 	}
 	return (i);
+}
+
+int	ft_strlcpy(char	*dest, char *src, size_t c)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen((const char *)src);
+	if (src == NULL || dest == NULL)
+		return (0);
+	if (c > 0)
+	{
+		while ((i < c - 1) && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (len);
 }
