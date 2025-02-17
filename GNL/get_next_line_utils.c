@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:12:02 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/02/12 13:06:58 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:41:18 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	j = 0;
 	i = 0;
-	len_concat = (ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!s1 || !s2)
 		return (0);
+	len_concat = (ft_strlen(s1) + ft_strlen(s2) + 1);
 	concat = malloc(sizeof(char) * len_concat);
 	if (!concat)
 		return (0);
@@ -90,6 +90,8 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char)c)
