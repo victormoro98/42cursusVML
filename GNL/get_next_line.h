@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:11:56 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/02/13 12:07:00 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:23:29 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 # include <stddef.h>
 # include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
+#  define BUFFER_SIZE 7
 # endif
 
 char	*get_next_line(int fd);
@@ -30,5 +31,6 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *str);
 int		ft_strlcpy(char	*dest, char *src, size_t c);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

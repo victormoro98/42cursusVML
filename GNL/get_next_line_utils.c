@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:12:02 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/02/13 13:41:18 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:25:06 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (0);
 	len_concat = (ft_strlen(s1) + ft_strlen(s2) + 1);
-	concat = malloc(sizeof(char) * len_concat);
+	concat = ft_calloc(sizeof(char), len_concat);
 	if (!concat)
 		return (0);
 	while (s1[i] != '\0')
@@ -55,10 +55,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = len_s - start;
 	if (start >= len_s)
 	{
-		substr = ft_strdup("");
+		substr = ft_calloc(sizeof(char), 1);
 		return (substr);
 	}
-	substr = malloc(sizeof(char) * (len + 1));
+	substr = ft_calloc(sizeof(char), (len + 1));
 	if (!substr)
 		return (0);
 	while (i < len)
@@ -70,20 +70,20 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 
-char	*ft_strdup(const char *s)
-{
-	char			*str_duplicated;
-	size_t			len;
+// char	*ft_strdup(const char *s)
+// {
+// 	char			*str_duplicated;
+// 	size_t			len;
 
-	len = ft_strlen(s);
-	if (s == NULL)
-		return (NULL);
-	str_duplicated = malloc(sizeof(char) * (len + 1));
-	if (str_duplicated == NULL)
-		return (NULL);
-	ft_strlcpy(str_duplicated, (char *)s, len + 1);
-	return (str_duplicated);
-}
+// 	len = ft_strlen(s);
+// 	if (s == NULL)
+// 		return (NULL);
+// 	str_duplicated = malloc(sizeof(char) * (len + 1));
+// 	if (str_duplicated == NULL)
+// 		return (NULL);
+// 	ft_strlcpy(str_duplicated, (char *)s, len + 1);
+// 	return (str_duplicated);
+// }
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -115,24 +115,23 @@ size_t	ft_strlen(const char *str)
 	}
 	return (i);
 }
-
-int	ft_strlcpy(char	*dest, char *src, size_t c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
+	void	*ptr;
 	size_t	i;
-	size_t	len;
 
+	if (nmemb != 0 && (nmemb * size) / nmemb != size)
+		return (NULL);
+	ptr = (void *)malloc(size * nmemb);
+	if (!ptr)
+		return (NULL);
+	if (size == 0)
+		return (ptr);
 	i = 0;
-	len = ft_strlen((const char *)src);
-	if (src == NULL || dest == NULL)
-		return (0);
-	if (c > 0)
+	while (i < (nmemb * size))
 	{
-		while ((i < c - 1) && src[i] != '\0')
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
+		((unsigned char *)ptr)[i] = 0;
+		i++;
 	}
-	return (len);
+	return (ptr);
 }
