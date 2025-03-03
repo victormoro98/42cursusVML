@@ -1,18 +1,18 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:12:02 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/02/26 21:25:06 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/02/27 19:47:42 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*concat;
 	size_t	len_concat;
@@ -38,10 +38,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	concat[i + j] = '\0';
+	free(s1);
 	return (concat);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	len_s;
 	size_t	i;
@@ -85,7 +86,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 // 	return (str_duplicated);
 // }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
@@ -103,15 +104,17 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
 	i = 0;
+	if(!str)
+		return(0);
 	while (*str != '\0')
 	{
-		++str;
-		++i;
+		str++;
+		i++;
 	}
 	return (i);
 }
