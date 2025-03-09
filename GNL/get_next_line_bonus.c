@@ -1,12 +1,12 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:11:28 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/03/10 00:15:51 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/03/10 00:23:16 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -62,8 +62,8 @@ char	*remaining_line(char *new_line)
 	i = 0;
 	while (new_line[i] && new_line[i] != '\n')
 		i++;
-	if (!new_line[i])///////////////////77
-		return(free(new_line), NULL);/////////////////////////
+	if (!new_line[i])
+		return(free(new_line), NULL);
 	remaining = ft_substr(new_line, i + 1, ft_strlen(new_line) - (i + 1));
 	free(new_line);
 	return (remaining);
@@ -72,18 +72,19 @@ char	*remaining_line(char *new_line)
 
 char	*get_next_line(int fd)
 {
-	static	char	*static_buffer = NULL;
-	char			*next_line = NULL;
+	int				i;
+	static	char	*static_buffer[1024];
+	char			*next_line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	static_buffer = read_complete_line(fd, static_buffer);
+	static_buffer[i] = read_complete_line(fd, static_buffer);
 	if (!static_buffer)
 		return (NULL);
 	next_line = process_line(static_buffer);
 	if (next_line == NULL)
-		return(free(static_buffer), static_buffer = NULL);
-	static_buffer = remaining_line(static_buffer);
+		return(free(static_buffer), static_buffer[i] = NULL);
+	static_buffer[i] = remaining_line(static_buffer);
 	if (next_line && *next_line == '\0')
 		return (free(next_line), free(static_buffer), NULL);
 	return (next_line);
