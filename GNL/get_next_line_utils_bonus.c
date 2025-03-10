@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 13:12:02 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/03/10 00:12:59 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/03/10 13:20:23 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
@@ -37,7 +37,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		concat[i + j] = s2[j];
 		j++;
 	}
-	concat[i + j] = '\0';	
+	concat[i + j] = '\0';
 	return (free(s1), concat);
 }
 
@@ -93,8 +93,8 @@ size_t	ft_strlen(char *str)
 	size_t	i;
 
 	i = 0;
-	if(!str)
-		return(0);
+	if (!str)
+		return (0);
 	while (str && *str != '\0')
 	{
 		str++;
@@ -102,11 +102,13 @@ size_t	ft_strlen(char *str)
 	}
 	return (i);
 }
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*ptr = NULL;
+	void	*ptr;
 	size_t	i;
 
+	ptr = NULL;
 	if (nmemb != 0 && ((nmemb * size) / nmemb != size))
 		return (NULL);
 	ptr = (void *)malloc(size * nmemb);
