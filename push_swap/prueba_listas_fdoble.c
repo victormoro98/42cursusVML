@@ -1,28 +1,21 @@
-#include <stdio.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "push_swap.h"
-// #include <parsing_stack.c>
+#include "parsing_stack.c"
+// typedef	struct nodo{
+// 	int			dato;
+// 	struct nodo *next;
+// }				new_node;
 
-typedef	struct nodo{
-	int			dato;
-	struct nodo *next;
-	struct nodo *prev;
-}				node;
-
-node *first = NULL;
-node *last = NULL;
+new_node *first = NULL;
+new_node *last = NULL;
 
 void	insert_node(int number)
 {
-	node *new = (node *)malloc(sizeof(node));
+	new_node *new = (new_node *)malloc(sizeof(new_node));
 	new->dato = number;
-
+	
 	if (first == NULL)
 	{
 		first = new;
-		first->prev = NULL;
 		first ->next = NULL;
 		last = first;
 	}
@@ -30,14 +23,13 @@ void	insert_node(int number)
 	{
 		last->next = new;
 		new ->next = NULL;
-		new->prev = last;
 		last = new;
 	}
 }
 
 void	print_list()
 {
-	node *actual = (node*)malloc(sizeof(node));
+	new_node *actual = (new_node*)malloc(sizeof(new_node));
 	actual = first;
 	if (first != NULL)
 	{
@@ -51,45 +43,23 @@ void	print_list()
 		printf("\nLa lista esta vacia");
 }
 
-void	print_reverse_list()
-{
-	node *actual = (node*)malloc(sizeof(node));
-	actual = last;
-	if (last != NULL)
-	{
-		while(actual != NULL)
-		{
-			printf("%i\n", actual->dato);
-			actual = actual->prev;
-		}
-	}
-	else
-		printf("\nLa lista esta vacia");
-}
-
-void	find_node(int	to_find)
+int	find_node(int	to_find)
 {
 	int	node_finded;
 
 	node_finded = 0;
-	node *actual = (node *)malloc(sizeof(node));
+	new_node *actual = (new_node *)malloc(sizeof(new_node));
 	actual = first;
 	if (first != NULL)
 	{
 		while (actual != NULL && node_finded != 1)
 		{
 			if (actual->dato == to_find)
-			{
 				node_finded = 1;
-				printf("Nodo %d encontrado\n", to_find);
-			}
 			actual = actual->next;
 		}
-		if (node_finded == 0)
-			printf("No se ha encontrado el nodo\n");
 	}
-	else
-		printf("ERROR: empty list.\n");
+	return (node_finded);
 }
 
 int	ft_atoi(const char *str)
@@ -118,28 +88,36 @@ int	ft_atoi(const char *str)
 	return (n);
 }
 
-bool	is_valid(char **str_num);
-int		ft_isdigit(int c);
-
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	new_node;
+	char	**arg_str;
+	int		i;
+	int		new_number;
 
 	i = 1;
-	if (argc < 3 || !is_valid(argv))
+	if (argc < 2 || (argc == 2 && count_nums(argv) == 1))
 		return (0);
-	while(argv[i])
+	while (argv[i])
 	{
-		new_node = ft_atoi(argv[i]);
-		insert_node(new_node);
+		arg_str = ft_split(argv[i], ' ');
+		int 	j = 0;
+		while (arg_str[j])
+		{
+			if (is_valid(arg_str[j]))
+			{
+				new_number = ft_atoi(arg_str[j]);
+				if (find_node(new_number) != 1)
+					insert_node(new_number);
+				else
+					return(0);
+				j++;
+			}
+			else
+				return(0);
+		}
+		free(arg_str);
 		i++;
 	}
 	print_list();
 	printf("-- --\na   b\n");
 }
-
-// print_list();
-// print_reverse_list();
-// find_node(10);
-// return(0);
