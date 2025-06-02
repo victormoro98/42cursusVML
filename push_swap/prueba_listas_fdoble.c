@@ -1,65 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prueba_listas_fdoble.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/13 18:03:40 by vmoro-lu          #+#    #+#             */
+/*   Updated: 2025/06/02 20:21:28 by vmoro-lu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include "parsing_stack.c"
-// typedef	struct nodo{
-// 	int			dato;
-// 	struct nodo *next;
-// }				new_node;
 
-new_node *first = NULL;
-new_node *last = NULL;
-
-void	insert_node(int number)
+void	insert_node(int *number, t_stack *stack)
 {
-	new_node *new = (new_node *)malloc(sizeof(new_node));
-	new->dato = number;
+	t_stack_node *new;
 	
-	if (first == NULL)
+	new = malloc(sizeof(t_stack_node));
+	if (!new)
+		return ;
+	new->dato = *number;
+	new->next = NULL;
+	if (stack->first == NULL)
 	{
-		first = new;
-		first ->next = NULL;
-		last = first;
+		stack-> first = new;
+		stack-> last = new;
 	}
 	else
 	{
-		last->next = new;
-		new ->next = NULL;
-		last = new;
+		stack->last->next = new;
+		stack-> last= new;
 	}
-}
-
-void	print_list()
-{
-	new_node *actual = (new_node*)malloc(sizeof(new_node));
-	actual = first;
-	if (first != NULL)
-	{
-		while(actual != NULL)
-		{
-			printf("%d\n", actual->dato);
-			actual = actual->next;
-		}
-	}
-	else
-		printf("\nLa lista esta vacia");
-}
-
-int	find_node(int	to_find)
-{
-	int	node_finded;
-
-	node_finded = 0;
-	new_node *actual = (new_node *)malloc(sizeof(new_node));
-	actual = first;
-	if (first != NULL)
-	{
-		while (actual != NULL && node_finded != 1)
-		{
-			if (actual->dato == to_find)
-				node_finded = 1;
-			actual = actual->next;
-		}
-	}
-	return (node_finded);
+	stack->size++;
 }
 
 int	ft_atoi(const char *str)
@@ -88,36 +60,50 @@ int	ft_atoi(const char *str)
 	return (n);
 }
 
+void	print_list(t_stack *stack)
+{
+	t_stack_node *actual = stack->first;
+	if (!actual)
+	{
+		printf("\nLa lista esta vacia\n");
+		return ;
+	}
+	while(actual)
+	{
+		printf("%d\n", actual->dato);
+		actual = actual->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
-	char	**arg_str;
-	int		i;
-	int		new_number;
+	t_stack a = {0};
+	t_stack b = {0};
 
-	i = 1;
-	if (argc < 2 || (argc == 2 && count_nums(argv) == 1))
-		return (0);
-	while (argv[i])
-	{
-		arg_str = ft_split(argv[i], ' ');
-		int 	j = 0;
-		while (arg_str[j])
-		{
-			if (is_valid(arg_str[j]))
-			{
-				new_number = ft_atoi(arg_str[j]);
-				if (find_node(new_number) != 1)
-					insert_node(new_number);
-				else
-					return(0);
-				j++;
-			}
-			else
-				return(0);
-		}
-		free(arg_str);
-		i++;
-	}
-	print_list();
-	printf("-- --\na   b\n");
+	if (!parse_stack(argc, argv, &a))
+		return (1);
+
+	// swap_op(&a, &b, 1);
+	// pb(&a, &b);
+	// pb(&a, &b);
+	// swap_op(&a, &b, 3);
+
+	reverse_rotate_op(&a, &b, 1);
+	reverse_rotate_op(&a, &b, 2);
+	reverse_rotate_op(&a, &b, 3);
+	print_list(&a);
+	printf("---\n");
+	print_list(&b);
+
+	/*
+	rotate_op(&a, &b, 3);
+	print_list(&a);
+	printf("---\n");
+	print_list(&b);
+	reverse_rotate_op(&a, &b, 3);
+	print_list(&a);
+	printf("---\n");
+	print_list(&b);
+	return (0);
+	*/
 }

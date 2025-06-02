@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parsing_stack.c                                    :+:      :+:    :+:   */
@@ -6,13 +6,27 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:57 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/04/23 12:15:39 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/02 20:22:08 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	is_valid(char *str_num)
+int	find_node(int *to_find, t_stack *stack)
+{
+	t_stack_node	*actual;
+	
+	actual = stack->first;
+	while (actual)
+	{
+		if (actual->dato == *to_find)
+			return (1);
+		actual = actual->next;
+	}
+	return (0);
+}
+
+bool	is_valid(char *str_num, t_stack *stack, int *new_number)
 {
 	int		i;
 	
@@ -21,15 +35,21 @@ bool	is_valid(char *str_num)
 	{
 		if (str_num[i] == ' ')
 			i++;
-		if (str_num[i] == '-' || str_num[i] == '+')
+		else if ((str_num[i] == '-' || str_num[i] == '+')
+				&& (str_num[i + 1] >= '0' && str_num[i + 1] <= '9'))
 			i++;
-		if (!str_num[i])
+		else if (!str_num[i])
 			break ;
-		if (ft_isdigit(str_num[i]))
+		else if (ft_isdigit(str_num[i]))
 			i++;
 		else
 			return(0);
 	}
+	*new_number = ft_atoi(str_num);
+	// printf("numero : %i", *new_number);
+	if (find_node(new_number, stack))
+		return (0);
+	// insert_node(new_number, stack);
 	return (1);
 }
 
@@ -60,12 +80,40 @@ int	count_nums(char **arg_array)
 	return (count);
 }
 
-// int	main(int argc, char **argv)
+int	parse_stack(int argc, char **argv, t_stack *stack)
+{
+	char	**arg_str;
+	int		i;
+	int		j;
+	int		new_number;
+	
+	i = 1;
+	if (argc < 2 || (argc == 2 && count_nums(argv) < 2))
+		return (0);
+	while (argv[i])
+	{
+		arg_str = ft_split(argv[i], ' ');
+		j = 0;
+		while (arg_str[j])
+		{
+			if (!is_valid(arg_str[j], stack, &new_number))
+				return(0);
+			else
+				insert_node(&new_number, stack);
+			j++;
+		}
+		free(arg_str);
+		i++;
+	}
+	return (1);
+}
+
+// static void	ft_free_arg(char **args)
 // {
-// 	int total_number = count_nums(argv);
-// 	if (argc < 2 || (argc == 2 && total_number == 1))
-// 		return (0);
-// 	printf ("total_num = %i\n", total_number);
-// 		//printerror
-// 	return (0);
+// 	int	i;
+
+// 	i = 0;
+// 	while (args[i])
+// 		free(args[i++]);
+// 	free(args);
 // }
