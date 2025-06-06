@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:03:40 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/02 20:21:28 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/03 00:24:04 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,19 @@ int	main(int argc, char **argv)
 	// pb(&a, &b);
 	// pb(&a, &b);
 	// swap_op(&a, &b, 3);
-
+	print_list(&a);
+	if (count_nums(argv) == 3)
+		sort_three(&a, &b);
+	printf("---\n");
+	print_list(&a);
+	/*
 	reverse_rotate_op(&a, &b, 1);
 	reverse_rotate_op(&a, &b, 2);
 	reverse_rotate_op(&a, &b, 3);
 	print_list(&a);
 	printf("---\n");
 	print_list(&b);
+	*/
 
 	/*
 	rotate_op(&a, &b, 3);

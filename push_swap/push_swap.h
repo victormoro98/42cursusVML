@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:41:11 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/02 20:08:09 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/03 00:23:24 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ void	rotate_op(t_stack *a, t_stack *b, int option);
 //reverse_rotate_operations
 void	reverse_rotate(t_stack *stack);
 void	reverse_rotate_op(t_stack *a, t_stack *b, int option);
+
+//sort_exceptions.c
+void	sort_three(t_stack *a, t_stack *b);
 
 //utils.c
 void	print_list(t_stack *stack);
