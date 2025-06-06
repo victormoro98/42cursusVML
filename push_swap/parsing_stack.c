@@ -6,11 +6,35 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:57 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/03 00:11:05 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/06 11:40:33 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	sorted_stack(t_stack *stack)
+{
+	int	i;
+	t_stack_node *head;
+	
+	if (!stack)
+		return (0);
+	i = 1;
+	head = stack->first;
+	while (head->next)
+	{
+		if(head->dato < head->next->dato)
+			i++;
+		else
+			break;
+		head = head->next;
+	}
+	printf("i = %i\n", i);
+	printf("size = %i\n", stack->size);
+	if(i == stack->size)
+		return (1);
+	return (0);
+}
 
 int	find_node(int *to_find, t_stack *stack)
 {

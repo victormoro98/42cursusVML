@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:41:11 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/03 00:23:24 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/06 11:48:29 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 typedef	struct s_stack_node{
 	int					dato;
 	int					index;
+	int					pos;
+	int					cost_a;
+	int					cost_b;
 	struct s_stack_node	*next;
 }					t_stack_node;
 
@@ -42,6 +45,7 @@ int		count_nums(char	**arg_array);
 int		ft_isdigit(int c);
 int		find_node(int	*to_find, t_stack *stack);
 int		parse_stack(int argc, char **argv, t_stack *stack);
+int     sorted_stack(t_stack *stack);
 // static void	ft_free_arg(char **args);
 
 //swap_operations

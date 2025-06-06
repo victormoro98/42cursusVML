@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba_listas_fdoble.c                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:03:40 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/03 00:24:04 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/06 11:33:37 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,11 @@ int	main(int argc, char **argv)
 	// pb(&a, &b);
 	// swap_op(&a, &b, 3);
 	print_list(&a);
-	if (count_nums(argv) == 3)
+	if (count_nums(argv) == 3 && !sorted_stack(&a))
 		sort_three(&a, &b);
 	printf("---\n");
 	print_list(&a);
+	return(0);
 	/*
 	reverse_rotate_op(&a, &b, 1);
 	reverse_rotate_op(&a, &b, 2);

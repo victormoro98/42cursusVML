@@ -6,7 +6,7 @@
 #    By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/27 16:54:18 by vmoro-lu          #+#    #+#              #
-#    Updated: 2025/06/03 00:13:27 by vmoro-lu         ###   ########.fr        #
+#    Updated: 2025/06/06 10:32:44 by vmoro-lu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = parsing_stack.c prueba_listas_fdoble.c utils.c push_operations.c swap_operations.c rotate_operations.c reverse_rotate_operations.c sort_exceptions.c
+SRC = parsing_stack.c push_swap.c utils.c push_operations.c swap_operations.c rotate_operations.c reverse_rotate_operations.c sort_exceptions.c
 OBJ = $(SRC:.c=.o)
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
