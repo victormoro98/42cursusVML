@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:03:40 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/06 11:33:37 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/12 16:20:56 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,57 +60,31 @@ int	ft_atoi(const char *str)
 	return (n);
 }
 
-void	print_list(t_stack *stack)
-{
-	t_stack_node *actual = stack->first;
-	if (!actual)
-	{
-		printf("\nLa lista esta vacia\n");
-		return ;
-	}
-	while(actual)
-	{
-		printf("%d\n", actual->dato);
-		actual = actual->next;
-	}
-}
-
 int	main(int argc, char **argv)
 {
-	t_stack a = {0};
-	t_stack b = {0};
+	t_stack	a;
+	t_stack	b;
+	int		chunk_count;
 
+	if (argc < 2)
+		return (0);
+	init_stack(&a);
+	init_stack(&b);
 	if (!parse_stack(argc, argv, &a))
+	{
+		write(2, "Error\n", 6);
 		return (1);
-
-	// swap_op(&a, &b, 1);
-	// pb(&a, &b);
-	// pb(&a, &b);
-	// swap_op(&a, &b, 3);
-	print_list(&a);
-	if (count_nums(argv) == 3 && !sorted_stack(&a))
+	}
+	assign_indexes(&a);
+	if (a.size == 3)
 		sort_three(&a, &b);
-	printf("---\n");
-	print_list(&a);
-	return(0);
-	/*
-	reverse_rotate_op(&a, &b, 1);
-	reverse_rotate_op(&a, &b, 2);
-	reverse_rotate_op(&a, &b, 3);
-	print_list(&a);
-	printf("---\n");
-	print_list(&b);
-	*/
-
-	/*
-	rotate_op(&a, &b, 3);
-	print_list(&a);
-	printf("---\n");
-	print_list(&b);
-	reverse_rotate_op(&a, &b, 3);
-	print_list(&a);
-	printf("---\n");
-	print_list(&b);
+	else
+	{
+		chunk_count = (a.size <= 100) ? 5 : 10;
+		push_chunks(&a, &b, chunk_count);
+		empty_b_to_a(&a, &b);
+	}
+	free_stack(&a);
+	// free_stack(&b);
 	return (0);
-	*/
 }

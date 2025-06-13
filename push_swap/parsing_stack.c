@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:57 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/06 11:40:33 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:00:23 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 int	sorted_stack(t_stack *stack)
 {
-	int	i;
-	t_stack_node *head;
-	
+	int				i;
+	t_stack_node	*head;
+
 	if (!stack)
 		return (0);
 	i = 1;
 	head = stack->first;
 	while (head->next)
 	{
-		if(head->dato < head->next->dato)
+		if (head->dato < head->next->dato)
 			i++;
 		else
-			break;
+			break ;
 		head = head->next;
 	}
-	printf("i = %i\n", i);
 	printf("size = %i\n", stack->size);
-	if(i == stack->size)
+	if (i == stack->size)
 		return (1);
 	return (0);
 }
@@ -39,7 +38,7 @@ int	sorted_stack(t_stack *stack)
 int	find_node(int *to_find, t_stack *stack)
 {
 	t_stack_node	*actual;
-	
+
 	actual = stack->first;
 	while (actual)
 	{
@@ -53,21 +52,21 @@ int	find_node(int *to_find, t_stack *stack)
 bool	is_valid(char *str_num, t_stack *stack, int *new_number)
 {
 	int		i;
-	
+
 	i = 0;
 	while (str_num[i])
 	{
 		if (str_num[i] == ' ')
 			i++;
 		else if ((str_num[i] == '-' || str_num[i] == '+')
-				&& (str_num[i + 1] >= '0' && str_num[i + 1] <= '9'))
+			&& (str_num[i + 1] >= '0' && str_num[i + 1] <= '9'))
 			i++;
 		else if (!str_num[i])
 			break ;
 		else if (ft_isdigit(str_num[i]))
 			i++;
 		else
-			return(0);
+			return (0);
 	}
 	*new_number = ft_atoi(str_num);
 	if (find_node(new_number, stack))
@@ -77,12 +76,15 @@ bool	is_valid(char *str_num, t_stack *stack, int *new_number)
 
 int	count_nums(char **arg_array)
 {
-	int i = 1;
-	int j;
-	int count = 0;
-	bool in_num = false;
+	int		i;
+	int		j;
+	int		count;
+	bool	in_num;
 
-	while (arg_array[i])
+	i = 0;
+	in_num = false;
+	count = 0;
+	while (*arg_array)
 	{
 		j = 0;
 		while (arg_array[i][j])
@@ -108,7 +110,7 @@ int	parse_stack(int argc, char **argv, t_stack *stack)
 	int		i;
 	int		j;
 	int		new_number;
-	
+
 	i = 1;
 	if (argc < 2 || (argc == 2 && count_nums(argv) < 2))
 		return (0);
@@ -119,23 +121,14 @@ int	parse_stack(int argc, char **argv, t_stack *stack)
 		while (arg_str[j])
 		{
 			if (!is_valid(arg_str[j], stack, &new_number))
-				return(0);
+				return (0);
 			else
 				insert_node(&new_number, stack);
 			j++;
+			free(*arg_str);
 		}
 		free(arg_str);
 		i++;
 	}
 	return (1);
 }
-
-// static void	ft_free_arg(char **args)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (args[i])
-// 		free(args[i++]);
-// 	free(args);
-// }

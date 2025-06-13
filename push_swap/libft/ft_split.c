@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:30:41 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/04/15 21:01:55 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/12 16:09:58 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "libft.h"
 #include <stdbool.h>
@@ -80,20 +80,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (result);
 }
-
-// int		main(void)
-// {
-// 	char const *s1 = ",, hola ,pisha, q, tal     ";
-// 	char c = ',';
-// 	char **result;
-// 	result = ft_split(s1, c);
-// 	if (!result)
-// 		return (0);
-// 	for (size_t i = 0 ; i < count_words(s1, c) ; i++)
-// 	{
-// 		printf("%s", result[i]);
-// 		free(result[i]);
-// 	}
-// 	free(result);
-// 	return(0);
-// }

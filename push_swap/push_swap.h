@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:41:11 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/06 11:48:29 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:46:13 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@
 typedef	struct s_stack_node{
 	int					dato;
 	int					index;
-	int					pos;
-	int					cost_a;
-	int					cost_b;
 	struct s_stack_node	*next;
 }					t_stack_node;
 
@@ -66,8 +63,22 @@ void	reverse_rotate_op(t_stack *a, t_stack *b, int option);
 
 //sort_exceptions.c
 void	sort_three(t_stack *a, t_stack *b);
+void	sort_three_b(t_stack *a, t_stack *b);
+
+//asign_index_to_nodes_a.c
+// static	int	*extract_values(t_stack *stack);
+// static	void	bubble_sort(int *array_nums, int size);
+void	assign_indexes(t_stack *stack);
+
+//push_chunk.c
+void	push_chunks(t_stack *a, t_stack *b, int chunk_count);
+
+//final_merge.c
+void	empty_b_to_a(t_stack *a, t_stack *b);
 
 //utils.c
+void	free_stack(t_stack *stack);
+void	init_stack(t_stack *stack);
 void	print_list(t_stack *stack);
 
 #endif
