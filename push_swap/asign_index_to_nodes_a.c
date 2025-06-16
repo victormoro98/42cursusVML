@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:46:23 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/12 16:50:00 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:33:41 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ static	int	*extract_values(t_stack *stack)
 	int				i;
 
 	i = 0;
-	array_nums = malloc(sizeof(int) * stack->size);
+	array_nums = malloc(sizeof(int) * (stack->size));
 	if (!array_nums)
 		return (NULL);
 	current = stack->first;
 	while (current)
 	{
-		array_nums[i++] = current->dato;
+		array_nums[i] = current->dato;
 		current = current->next;
+		i++;
 	}
 	return (array_nums);
 }

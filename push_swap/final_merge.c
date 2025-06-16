@@ -6,13 +6,13 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 11:55:14 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/12 16:51:07 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 10:49:31 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_max_index(t_stack *b)
+int	get_max_index(t_stack *b)
 {
 	t_stack_node	*node;
 	int				max;
@@ -28,7 +28,7 @@ static int	get_max_index(t_stack *b)
 	return (max);
 }
 
-static int	get_position(t_stack *b, int index)
+int	get_position(t_stack *b, int index)
 {
 	t_stack_node	*node;
 	int				pos;

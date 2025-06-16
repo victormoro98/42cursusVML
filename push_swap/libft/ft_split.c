@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:30:41 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/12 16:09:58 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:36:00 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*add_words(char const *s, int *j, char c)
 	char	*result;
 
 	i = 0;
-	while (s[*	j] == c)
+	while (s[*j] == c)
 		(*j)++;
 	i = *j;
 	while (s[i] != '\0' && s[i] != c)

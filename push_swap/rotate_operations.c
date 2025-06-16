@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:17:35 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/06 10:35:21 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:33:02 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rotate(t_stack *stack)
 {
-	t_stack_node *temp;
+	t_stack_node	*temp;
 
 	if (!stack || stack->size < 2)
 		return ;
@@ -41,6 +41,6 @@ void	rotate_op(t_stack *a, t_stack *b, int option)
 	{
 		rotate(a);
 		rotate(b);
-		ft_putstr_fd("rr\n", 1);	
+		ft_putstr_fd("rr\n", 1);
 	}
 }

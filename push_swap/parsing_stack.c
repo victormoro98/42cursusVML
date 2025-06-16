@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:57 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/12 17:00:23 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:18:48 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,32 +74,27 @@ bool	is_valid(char *str_num, t_stack *stack, int *new_number)
 	return (1);
 }
 
-int	count_nums(char **arg_array)
+int	count_nums(char *arg_array)
 {
-	int		i;
 	int		j;
 	int		count;
 	bool	in_num;
 
-	i = 0;
 	in_num = false;
 	count = 0;
-	while (*arg_array)
+	j = 0;
+	while (arg_array[j])
 	{
-		j = 0;
-		while (arg_array[i][j])
+		if (ft_isdigit(arg_array[j]) && !in_num)
 		{
-			if (ft_isdigit(arg_array[i][j]) && !in_num)
-			{
-				in_num = true;
-				count++;
-			}
-			else if (arg_array[i][j] == ' ')
-				in_num = false;
-			j++;
+			in_num = true;
+			count++;
 		}
-		in_num = false;
-		i++;
+		else if (arg_array[j] == ' ')
+		{
+			in_num = false;
+		}
+		j++;
 	}
 	return (count);
 }
@@ -112,7 +107,7 @@ int	parse_stack(int argc, char **argv, t_stack *stack)
 	int		new_number;
 
 	i = 1;
-	if (argc < 2 || (argc == 2 && count_nums(argv) < 2))
+	if (argc < 2 || (argc == 2 && count_nums(argv[i]) < 2))
 		return (0);
 	while (argv[i])
 	{
@@ -121,13 +116,12 @@ int	parse_stack(int argc, char **argv, t_stack *stack)
 		while (arg_str[j])
 		{
 			if (!is_valid(arg_str[j], stack, &new_number))
-				return (0);
+				return (free_split(arg_str), 0);
 			else
 				insert_node(&new_number, stack);
 			j++;
-			free(*arg_str);
 		}
-		free(arg_str);
+		free_split(arg_str);
 		i++;
 	}
 	return (1);

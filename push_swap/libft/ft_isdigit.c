@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:17:05 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/14 17:12:17 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 11:41:45 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
+	if (c >= '0' && c <= '9')
 		return (c);
 	else
 		return (0);

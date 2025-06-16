@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:03:40 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/12 16:20:56 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:37:29 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	insert_node(int *number, t_stack *stack)
 {
-	t_stack_node *new;
-	
+	t_stack_node	*new;
+
 	new = malloc(sizeof(t_stack_node));
 	if (!new)
 		return ;
@@ -23,13 +23,13 @@ void	insert_node(int *number, t_stack *stack)
 	new->next = NULL;
 	if (stack->first == NULL)
 	{
-		stack-> first = new;
-		stack-> last = new;
+		stack->first = new;
+		stack->last = new;
 	}
 	else
 	{
 		stack->last->next = new;
-		stack-> last= new;
+		stack->last = new;
 	}
 	stack->size++;
 }
@@ -76,8 +76,12 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	assign_indexes(&a);
-	if (a.size == 3)
+	if (a.size == 2)
+		sort_two(&a, &b);
+	else if (a.size == 3)
 		sort_three(&a, &b);
+	else if (a.size == 4)
+		sort_four(&a, &b);
 	else
 	{
 		chunk_count = (a.size <= 100) ? 5 : 10;
@@ -85,6 +89,5 @@ int	main(int argc, char **argv)
 		empty_b_to_a(&a, &b);
 	}
 	free_stack(&a);
-	// free_stack(&b);
 	return (0);
 }

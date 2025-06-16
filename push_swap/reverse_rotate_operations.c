@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:47:58 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/02 20:09:35 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:34:15 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@ void	reverse_rotate(t_stack *stack)
 
 	if (!stack || stack->size < 2)
 		return ;
-
 	last = stack->first;
 	while (last->next && last->next->next)
 		last = last->next;
-
 	prev = last;
 	last = last->next;
-
 	prev->next = NULL;
 	last->next = stack->first;
 	stack->first = last;

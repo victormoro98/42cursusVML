@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:10:33 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/12 12:25:33 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:34:54 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,32 @@ void	free_stack(t_stack *stack)
 		temp = stack->first;
 		stack->first = stack->first->next;
 		free(temp);
+	}
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	if (!split)
+		return ;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+void	print_list(t_stack *a)
+{
+	t_stack_node	*current;
+
+	current = a->first;
+	while (current)
+	{
+		printf("node = %i\n", current->dato);
+		current = current ->next;
 	}
 }
