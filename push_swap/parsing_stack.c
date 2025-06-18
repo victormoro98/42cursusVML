@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:57 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/18 15:43:06 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/18 19:37:05 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	count_nums(char *arg_array)
 	return (count);
 }
 
-int	parse_stack(int argc, char **argv, t_stack *stack)
+int	parse_stack(char **argv, t_stack *stack)
 {
 	char		**arg_str;
 	int			i;
@@ -110,23 +110,22 @@ int	parse_stack(int argc, char **argv, t_stack *stack)
 	long		new_number;
 
 	i = 1;
-	if (argc < 2 || (argc == 2 && count_nums(argv[i]) < 2))
-		return (0);
 	while (argv[i])
 	{
 		arg_str = ft_split(argv[i], ' ');
-		j = -1;
-		if (arg_str[i] == NULL)
+		j = 0;
+		if (arg_str[j] == NULL)
 			return (0);
-		while (arg_str[++j])
+		while (arg_str[j])
 		{
 			if (!is_valid(arg_str[j], stack, &new_number))
 				return (free_split(arg_str), 0);
 			else
 				insert_node(&new_number, stack);
+			j++;
 		}
-		free_split(arg_str);
 		i++;
+		free_split(arg_str);
 	}
 	return (1);
 }

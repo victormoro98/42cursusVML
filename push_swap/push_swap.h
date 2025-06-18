@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:41:11 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/18 15:05:15 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/18 21:45:47 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ bool	is_valid(char *str_num, t_stack *stack, long *new_number);
 int		count_nums(char	*arg_array);
 int		ft_isdigit(int c);
 int		find_node(int	*to_find, t_stack *stack);
-int		parse_stack(int argc, char **argv, t_stack *stack);
+int		parse_stack(char **argv, t_stack *stack);
 int		sorted_stack(t_stack *stack);
 // static void	ft_free_arg(char **args);
 
@@ -67,10 +67,11 @@ void	reverse_rotate_op(t_stack *a, t_stack *b, int option);
 void	sort_three(t_stack *a, t_stack *b);
 void	sort_four(t_stack *a, t_stack *b);
 void	sort_two(t_stack *a, t_stack *b);
+void	sort_five(t_stack *a, t_stack *b);
 
 //asign_index_to_nodes_a.c
-// static	int	*extract_values(t_stack *stack);
-// static	void	bubble_sort(int *array_nums, int size);
+int		*extract_values(t_stack *stack);
+void	bubble_sort(int *array_nums, int size);
 void	assign_indexes(t_stack *stack);
 
 //push_chunk.c

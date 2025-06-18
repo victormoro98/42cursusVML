@@ -6,13 +6,13 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:46:23 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/16 13:33:41 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/18 19:39:21 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	int	*extract_values(t_stack *stack)
+int	*extract_values(t_stack *stack)
 {
 	t_stack_node	*current;
 	int				*array_nums;
@@ -32,7 +32,7 @@ static	int	*extract_values(t_stack *stack)
 	return (array_nums);
 }
 
-static	void	bubble_sort(int *array_nums, int size)
+void	bubble_sort(int *array_nums, int size)
 {
 	int	i;
 	int	temp;

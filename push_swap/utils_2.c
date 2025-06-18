@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:29:22 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/18 15:43:39 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/18 20:39:37 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	chose_sort(t_stack *a, t_stack *b, int size)
 		sort_three(a, b);
 	else if (size == 4)
 		sort_four(a, b);
+	else if (size == 5)
+		sort_five(a, b);
 	else
 	{
 		if (size <= 100)
