@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmoro-lu <vmoro-lu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 00:54:11 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/01/28 13:47:04 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:01:48 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdbool.h>
 
-int	ft_atoi(const char *nptr)
+long	ft_atolong(const char *nptr)
 {
-	int		i;
-	int		n;
-	bool	is_negative;
+	int			i;
+	long		n;
+	bool		is_negative;
 
 	is_negative = false;
 	i = 0;

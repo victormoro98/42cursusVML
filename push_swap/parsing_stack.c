@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:57 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/16 14:18:48 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:43:06 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	sorted_stack(t_stack *stack)
 			break ;
 		head = head->next;
 	}
-	printf("size = %i\n", stack->size);
 	if (i == stack->size)
 		return (1);
 	return (0);
@@ -49,9 +48,10 @@ int	find_node(int *to_find, t_stack *stack)
 	return (0);
 }
 
-bool	is_valid(char *str_num, t_stack *stack, int *new_number)
+bool	is_valid(char *str_num, t_stack *stack, long *new_number)
 {
 	int		i;
+	int		int_number;
 
 	i = 0;
 	while (str_num[i])
@@ -68,8 +68,11 @@ bool	is_valid(char *str_num, t_stack *stack, int *new_number)
 		else
 			return (0);
 	}
-	*new_number = ft_atoi(str_num);
-	if (find_node(new_number, stack))
+	*new_number = ft_atolong(str_num);
+	if (*new_number < -2147483648 && *new_number > 2147483647)
+		return (0);
+	int_number = (int)*new_number;
+	if (find_node(&int_number, stack))
 		return (0);
 	return (1);
 }
@@ -101,10 +104,10 @@ int	count_nums(char *arg_array)
 
 int	parse_stack(int argc, char **argv, t_stack *stack)
 {
-	char	**arg_str;
-	int		i;
-	int		j;
-	int		new_number;
+	char		**arg_str;
+	int			i;
+	int			j;
+	long		new_number;
 
 	i = 1;
 	if (argc < 2 || (argc == 2 && count_nums(argv[i]) < 2))
@@ -112,14 +115,15 @@ int	parse_stack(int argc, char **argv, t_stack *stack)
 	while (argv[i])
 	{
 		arg_str = ft_split(argv[i], ' ');
-		j = 0;
-		while (arg_str[j])
+		j = -1;
+		if (arg_str[i] == NULL)
+			return (0);
+		while (arg_str[++j])
 		{
 			if (!is_valid(arg_str[j], stack, &new_number))
 				return (free_split(arg_str), 0);
 			else
 				insert_node(&new_number, stack);
-			j++;
 		}
 		free_split(arg_str);
 		i++;

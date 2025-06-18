@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 16:41:11 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/16 14:33:55 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:05:15 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ typedef struct s_stack
 }					t_stack;
 
 //prueba_listas_dobles.c
-void	insert_node(int *number, t_stack *stack);
+void	insert_node(long *number, t_stack *stack);
 int		ft_atoi(const char *str);
 
 //parsing stack
-bool	is_valid(char *str_num, t_stack *stack, int *new_number);
+bool	is_valid(char *str_num, t_stack *stack, long *new_number);
 int		count_nums(char	*arg_array);
 int		ft_isdigit(int c);
 int		find_node(int	*to_find, t_stack *stack);
@@ -81,10 +81,13 @@ void	empty_b_to_a(t_stack *a, t_stack *b);
 int		get_max_index(t_stack *b);
 int		get_position(t_stack *a, int index);
 
-//utils.c
+//utils_1.c
 void	free_stack(t_stack *stack);
 void	free_split(char **split);
 void	init_stack(t_stack *stack);
 void	print_list(t_stack *stack);
+
+//utils_2.c
+void	chose_sort(t_stack *a, t_stack *b, int size);
 
 #endif
