@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:57 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/18 19:37:05 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/19 11:32:13 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ bool	is_valid(char *str_num, t_stack *stack, long *new_number)
 			return (0);
 	}
 	*new_number = ft_atolong(str_num);
-	if (*new_number < -2147483648 && *new_number > 2147483647)
+	if (*new_number < -2147483648 || *new_number > 2147483647)
 		return (0);
 	int_number = (int)*new_number;
 	if (find_node(&int_number, stack))

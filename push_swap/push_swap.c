@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:03:40 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/18 19:38:15 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/19 11:50:13 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,19 @@ int	main(int argc, char **argv)
 	t_stack	b;
 
 	if (argc < 2)
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+			return (0);
 	init_stack(&a);
 	init_stack(&b);
-	if (argc < 2 || (argc == 2 && count_nums(argv[1]) < 2)
-		|| !parse_stack(argv, &a))
+	if (!parse_stack(argv, &a))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	assign_indexes(&a);
-	chose_sort(&a, &b, a.size);
+	if (!sorted_stack(&a))
+	{
+		assign_indexes(&a);
+		chose_sort(&a, &b, a.size);
+	}
 	free_stack(&a);
 	return (0);
 }
