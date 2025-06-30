@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:29:22 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/19 10:45:36 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:34:01 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,6 @@ void	insert_node(long *number, t_stack *stack)
 		stack->last = new;
 	}
 	stack->size++;
-}
-
-int	ft_atoi(const char *str)
-{
-	bool	is_negative;
-	int		n;
-
-	is_negative = false;
-	while ((*str >= 9 && *str <= 13) || *str == ' ')
-		++str;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			is_negative = !is_negative;
-		++str;
-	}
-	n = 0;
-	while (*str >= '0' && *str <= '9')
-	{
-		n *= 10;
-		n += *str - '0';
-		++str;
-	}
-	if (is_negative)
-		n = -n;
-	return (n);
 }
 
 void	chose_sort(t_stack *a, t_stack *b, int size)

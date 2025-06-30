@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:10:33 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/16 14:34:54 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/30 10:47:29 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,4 @@ void	free_split(char **split)
 		i++;
 	}
 	free(split);
-}
-
-void	print_list(t_stack *a)
-{
-	t_stack_node	*current;
-
-	current = a->first;
-	while (current)
-	{
-		printf("node = %i\n", current->dato);
-		current = current ->next;
-	}
 }

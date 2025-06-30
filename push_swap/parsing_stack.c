@@ -6,7 +6,7 @@
 /*   By: vmoro-lu <vmoro-lu@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:25:57 by vmoro-lu          #+#    #+#             */
-/*   Updated: 2025/06/19 11:32:13 by vmoro-lu         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:45:00 by vmoro-lu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,31 +77,6 @@ bool	is_valid(char *str_num, t_stack *stack, long *new_number)
 	return (1);
 }
 
-int	count_nums(char *arg_array)
-{
-	int		j;
-	int		count;
-	bool	in_num;
-
-	in_num = false;
-	count = 0;
-	j = 0;
-	while (arg_array[j])
-	{
-		if (ft_isdigit(arg_array[j]) && !in_num)
-		{
-			in_num = true;
-			count++;
-		}
-		else if (arg_array[j] == ' ')
-		{
-			in_num = false;
-		}
-		j++;
-	}
-	return (count);
-}
-
 int	parse_stack(char **argv, t_stack *stack)
 {
 	char		**arg_str;
@@ -115,11 +90,11 @@ int	parse_stack(char **argv, t_stack *stack)
 		arg_str = ft_split(argv[i], ' ');
 		j = 0;
 		if (arg_str[j] == NULL)
-			return (0);
+			return (free(arg_str), 0);
 		while (arg_str[j])
 		{
 			if (!is_valid(arg_str[j], stack, &new_number))
-				return (free_split(arg_str), 0);
+				return (free_split(arg_str), free_stack(stack), 0);
 			else
 				insert_node(&new_number, stack);
 			j++;
